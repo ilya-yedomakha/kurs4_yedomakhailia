@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Державна міграційна служба України</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Державна міграційна служба України</h1>
+</header>
+
+<nav>
+    <a href="#home">Головна</a>
+    <a href="#services">Послуги</a>
+    <a href="#news">Закони</a>
+    <a href="#contact">Контакти</a>
+</nav>
+
+<section id="services">
+    <h1>Form with DateTime Field</h1>
+
+    <form th:action="@{/webcab/calendar/queueRegistration/show/}" th:object="${queueRow}" method="post">
+        <label for="dateTime">Select Date and Time:</label>
+        <input type="datetime-local" id="dateTime" th:field="*{dateTime}" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2023 Державна міграційна служба України</p>
+</footer>
+
+</body>
+</html>

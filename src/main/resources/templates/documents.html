@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Державна міграційна служба України</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body>
+
+<header>
+    <h1>Державна міграційна служба України</h1>
+</header>
+
+<nav>
+    <a href="#home">Головна</a>
+    <a href="#services">Послуги</a>
+    <a href="#news">Закони</a>
+    <a href="#contact">Контакти</a>
+</nav>
+
+<section id="services">
+<!--    birth-->
+    <strong>Birth sertificate:</strong>
+    <th:block th:if="${documentList[0] != null}" th:with="selectedDocument=${documentList[0]}">
+        <div>
+            <p>firstName: <span th:text="${selectedDocument.getFirstName()}"></span></p>
+            <p>lastName: <span th:text="${selectedDocument.getLastName()}"></span></p>
+            <p>issueDate: <span th:text="${selectedDocument.getIssueDate()}"></span></p>
+            <p>issueDepartment: <span th:text="${selectedDocument.getIssueDepartment()}"></span></p>
+            <p>number: <span th:text="${selectedDocument.getNumber()}"></span></p>
+            <p>categories: <span th:text="${selectedDocument.getDateOfBirth()}"></span></p>
+            <p>placeOfBirth: <span th:text="${selectedDocument.getPlaceOfBirth()}"></span></p>
+        </div>
+    </th:block>
+
+    <th:block th:if="${documentList[0] == null}">
+        <p>No Document available.</p>
+    </th:block>
+
+    <br>
+<!--driver-->
+    <strong>Driver License:</strong>
+    <th:block th:if="${documentList[1] != null}" th:with="selectedDocument=${documentList[1]}">
+        <div>
+            <p>ID: <span th:text="${selectedDocument.id}"></span></p>
+            <p>firstName: <span th:text="${selectedDocument.getFirstName()}"></span></p>
+            <p>lastName: <span th:text="${selectedDocument.getLastName()}"></span></p>
+            <p>issueDate: <span th:text="${selectedDocument.getIssueDate()}"></span></p>
+            <p>issueDepartment: <span th:text="${selectedDocument.getIssueDepartment()}"></span></p>
+            <p>number: <span th:text="${selectedDocument.getNumber()}"></span></p>
+            <p>categories: <span th:text="${selectedDocument.getCategories()}"></span></p>
+            <p>expireDate: <span th:text="${selectedDocument.getExpireDate()}"></span></p>
+        </div>
+    </th:block>
+
+    <th:block th:if="${documentList[1] == null}">
+        <p>No document available.</p>
+    </th:block>
+
+    <br>
+<!--passport-->
+    <strong>Passport:</strong>
+    <th:block th:if="${documentList[2] != null}" th:with="selectedDocument=${documentList[2]}">
+        <div>
+            <p>firstName: <span th:text="${selectedDocument.getFirstName()}"></span></p>
+            <p>lastName: <span th:text="${selectedDocument.getLastName()}"></span></p>
+            <p>issueDate: <span th:text="${selectedDocument.getIssueDate()}"></span></p>
+            <p>issueDepartment: <span th:text="${selectedDocument.getIssueDepartment()}"></span></p>
+            <p>number: <span th:text="${selectedDocument.getNumber()}"></span></p>
+            <p>categories: <span th:text="${selectedDocument.getDateOfBirth()}"></span></p>
+            <p>placeOfBirth: <span th:text="${selectedDocument.getPlaceOfBirth()}"></span></p>
+            <p>expireDate: <span th:text="${selectedDocument.getExpireDate()}"></span></p>
+        </div>
+    </th:block>
+
+    <th:block th:if="${documentList[2] == null}">
+        <p>No document available.</p>
+    </th:block>
+
+    <br>
+<!--registration-->
+    <strong>Registration:</strong>
+    <th:block th:if="${documentList[3] != null}" th:with="selectedDocument=${documentList[3]}">
+        <div>
+            <p>firstName: <span th:text="${selectedDocument.getFirstName()}"></span></p>
+            <p>lastName: <span th:text="${selectedDocument.getLastName()}"></span></p>
+            <p>issueDate: <span th:text="${selectedDocument.getIssueDate()}"></span></p>
+            <p>issueDepartment: <span th:text="${selectedDocument.getIssueDepartment()}"></span></p>
+            <p>number: <span th:text="${selectedDocument.getNumber()}"></span></p>
+            <p>expireDate: <span th:text="${selectedDocument.getExpireDate()}"></span></p>
+
+        </div>
+    </th:block>
+
+    <th:block th:if="${documentList[3] == null}">
+        <p>No document available.</p>
+    </th:block>
+
+    <br>
+    <!--visa-->
+    <strong>Visa:</strong>
+    <th:block th:if="${documentList[4] != null}" th:with="selectedDocument=${documentList[4]}">
+        <div>
+            <p>firstName: <span th:text="${selectedDocument.getFirstName()}"></span></p>
+            <p>lastName: <span th:text="${selectedDocument.getLastName()}"></span></p>
+            <p>issueDate: <span th:text="${selectedDocument.getIssueDate()}"></span></p>
+            <p>issueDepartment: <span th:text="${selectedDocument.getIssueDepartment()}"></span></p>
+            <p>number: <span th:text="${selectedDocument.getNumber()}"></span></p>
+            <p>expireDate: <span th:text="${selectedDocument.getExpireDate()}"></span></p>
+
+        </div>
+    </th:block>
+
+    <th:block th:if="${documentList[4] == null}">
+        <p>No document available.</p>
+    </th:block>
+</section>
+
+
+
+</body>
+</html>

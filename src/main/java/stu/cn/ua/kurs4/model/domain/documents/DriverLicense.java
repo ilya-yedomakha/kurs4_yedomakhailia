@@ -1,0 +1,25 @@
+package stu.cn.ua.kurs4.model.domain.documents;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import stu.cn.ua.kurs4.model.domain.documents.superclass.Document;
+import stu.cn.ua.kurs4.model.domain.people.Client;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Getter
+@Setter
+@Table(name = "driverLicenses")
+public class DriverLicense extends Document {
+    @Temporal(TemporalType.DATE)
+    private Date expireDate;
+
+    private String categories;
+
+    @OneToOne(mappedBy = "driverLicense")
+    private Client client;
+}

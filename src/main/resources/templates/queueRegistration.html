@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Державна міграційна служба України</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+    <script th:src="@{/js/jquery-3.5.0.js}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            $("#emailLabel").show();
+            $("#emailField").show();
+            $("#phoneLabel").hide();
+            $("#phoneNumber").hide();
+
+            jQuery("#addqueuerow").click(function () {
+                var QueueRow = {
+                    operation: jQuery("#operation").val(),
+                    dateTime: jQuery("#datetime").val(),
+                    phone: jQuery("#phoneNumber").val(),
+                    email: jQuery("#emailField").val(),
+                    client: {
+                        id: 2
+                    }
+                };
+                var url = '/queueRow/';
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(QueueRow),
+                    dataType: 'json',
+                    success: function (data) {
+                        location.href = "/"
+                    },
+                    error: function (e) {
+                        alert("Error! Something went wrong!");
+                        location.href = "/webcab/calendar/show/"
+                    }
+                });
+            });
+
+
+
+            $("#toggleButton").click(function () {
+                $("#emailLabel, #emailField").toggle();
+                $("#phoneLabel, #phoneNumber").toggle();
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Державна міграційна служба України</h1>
+</header>
+
+<nav>
+    <a href="#home">Головна</a>
+    <a href="#services">Послуги</a>
+    <a href="#news">Закони</a>
+    <a href="#contact">Контакти</a>
+</nav>
+
+<section id="services">
+        <label id="phoneLabel" for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber">
+
+    <label for="emailField"  id="emailLabel">Email:</label>
+    <input type="text" id="emailField" name="emailField">
+
+    <br>
+
+    <button id="toggleButton">Toggle Email/Phone</button>
+
+    <br>
+
+        <label for="operation">Select Operation:</label>
+        <select id="operation" name="operation" required>
+            <option value="passport">Passport</option>
+            <option value="registration">Registration</option>
+            <option value="driverLicense">Driver License</option>
+            <option value="visa">Visa</option>
+            <option value="birthCertificate">Birth Certificate</option>
+        </select>
+
+        <input type="hidden" id="datetime" name="datetime" th:value="${dateTimeParam}">
+
+
+        <input type="button" id="addqueuerow" value="Submit">
+</section>
+
+<footer>
+    <p>&copy; 2023 Державна міграційна служба України</p>
+</footer>
+
+</body>
+</html>

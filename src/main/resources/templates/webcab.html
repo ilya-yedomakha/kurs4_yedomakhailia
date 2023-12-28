@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Особистий кабінет</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Особистий кабінет</h1>
+</header>
+
+<nav>
+    <a href="#home">Головна</a>
+    <a href="#services">Послуги</a>
+    <a href="#news">Закони</a>
+    <a href="#contact">Контакти</a>
+</nav>
+
+<section id="services">
+    <h2>Наші послуги</h2>
+    <ul>
+        <li><a href = 'calendar/show/'>реєстрація в електронній черзі</a> </li>
+        <li><a th:href = "@{docs/{id}/show(id=${2})}">Перегляд документів</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>&copy; 2023 Державна міграційна служба України</p>
+</footer>
+
+</body>
+</html>
